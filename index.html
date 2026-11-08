@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101827">
+    <meta name="description" content="A beautiful, easy-to-read live weather dashboard for cities around the world.">
+    <title>Weatherly — Your daily forecast</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="app-shell">
+        <header class="topbar">
+            <a class="brand" href="#" aria-label="Weatherly home">
+                <span class="brand-mark" aria-hidden="true">✳</span>
+                <span>weatherly<span class="brand-period">.</span></span>
+            </a>
+            <p class="topbar-note">A little more sunshine in your day</p>
+        </header>
+
+        <section class="search-panel" aria-label="Find a location">
+            <form class="search-form" id="searchForm">
+                <label class="sr-only" for="cityInput">City or postal code</label>
+                <span class="search-icon" aria-hidden="true">⌕</span>
+                <input
+                    type="search"
+                    id="cityInput"
+                    name="city"
+                    placeholder="Search by a city name "
+                    autocomplete="off"
+                    required
+                >
+                <button class="search-button" id="searchBtn" type="submit">
+                    <span>Search</span>
+                    <span class="button-arrow" aria-hidden="true">→</span>
+                </button>
+            </form>
+            <button class="location-button" id="locationBtn" type="button">
+                <span aria-hidden="true">◎</span>
+                Use my location
+            </button>
+            <p class="status-message" id="message" role="status" aria-live="polite">
+                Search for a place to see its current conditions.
+            </p>
+        </section>
+
+        <section class="weather-card" id="weatherCard" aria-label="Current weather" aria-busy="false">
+            <div class="card-glow" aria-hidden="true"></div>
+            <div class="weather-heading">
+                <div class="location-copy">
+                    <p class="eyebrow"><span class="live-dot"></span> CURRENT WEATHER</p>
+                    <h1 id="city">Your city</h1>
+                    <p class="location-line"><span id="region">Search to get started</span><span class="location-divider" aria-hidden="true">·</span><span id="country">Around the world</span></p>
+                </div>
+                <div class="unit-control" aria-label="Temperature units">
+                    <button class="unit-button is-active" id="celsiusBtn" type="button" aria-pressed="true" aria-label="Show temperature in Celsius">°C</button>
+                    <span aria-hidden="true">/</span>
+                    <button class="unit-button" id="fahrenheitBtn" type="button" aria-pressed="false" aria-label="Show temperature in Fahrenheit">°F</button>
+                </div>
+            </div>
+
+            <div class="main-weather">
+                <div class="temperature-block">
+                    <p class="temperature" id="temperature" aria-label="Temperature">--<span>°</span></p>
+                    <p class="condition" id="description">Waiting for your forecast</p>
+                    <p class="feels-like" id="feelsLike">Feels like --°</p>
+                </div>
+                <div class="weather-art">
+                    <div class="sun-halo" aria-hidden="true"></div>
+                    <img id="weatherIcon" src="" alt="" hidden>
+                    <span class="weather-placeholder" id="weatherPlaceholder" aria-hidden="true">☀</span>
+                </div>
+            </div>
+
+            <div class="section-divider">
+                <span>THE DETAILS</span>
+                <span class="observation-time" id="observationTime">Awaiting an update</span>
+            </div>
+
+            <div class="weather-details">
+                <article class="detail-card">
+                    <span class="detail-symbol humidity-symbol" aria-hidden="true">◌</span>
+                    <div><p>Humidity</p><h2 id="humidity">--%</h2></div>
+                    <span class="detail-note">in the air</span>
+                </article>
+                <article class="detail-card">
+                    <span class="detail-symbol wind-symbol" aria-hidden="true">↗</span>
+                    <div><p>Wind</p><h2 id="wind">--</h2></div>
+                    <span class="detail-note" id="windDirection">speed</span>
+                </article>
+                <article class="detail-card">
+                    <span class="detail-symbol visibility-symbol" aria-hidden="true">◉</span>
+                    <div><p>Visibility</p><h2 id="visibility">--</h2></div>
+                    <span class="detail-note">at a glance</span>
+                </article>
+                <article class="detail-card">
+                    <span class="detail-symbol uv-symbol" aria-hidden="true">☼</span>
+                    <div><p>UV index</p><h2 id="uvIndex">--</h2></div>
+                    <span class="detail-note" id="uvLabel">sun exposure</span>
+                </article>
+                <article class="detail-card">
+                    <span class="detail-symbol cloud-symbol" aria-hidden="true">☁</span>
+                    <div><p>Cloud cover</p><h2 id="cloud">--%</h2></div>
+                    <span class="detail-note">of the sky</span>
+                </article>
+                <article class="detail-card">
+                    <span class="detail-symbol pressure-symbol" aria-hidden="true">⌁</span>
+                    <div><p>Pressure</p><h2 id="pressure">--</h2></div>
+                    <span class="detail-note">at sea level</span>
+                </article>
+            </div>
+
+            <div class="card-footer">
+                <span><span class="footer-pin" aria-hidden="true">⌖</span> <span id="localTime">Local time —</span></span>
+                <span>Live conditions <span class="footer-sparkle" aria-hidden="true">✳</span></span>
+            </div>
+        </section>
+
+        <footer class="page-footer">
+            <span>Powered by Weatherstack</span>
+            <span>Made for curious skies <span aria-hidden="true">✦</span></span>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
